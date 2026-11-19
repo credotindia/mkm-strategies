@@ -1,0 +1,80 @@
+.page-loader {
+  --pad: clamp(16px, 1.4vw, 28px);
+  --w: min(100vw - 2 * var(--pad), max(50vw, 320px), 110vh);
+  --ease: cubic-bezier(0.76, 0, 0.24, 1);
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  animation: page-loader-reveal 1s var(--ease) 2.5s forwards;
+}
+
+.page-loader-glyph {
+  position: absolute;
+  inset: 0;
+}
+
+.page-loader-mark {
+  position: absolute;
+  left: var(--pad);
+  bottom: var(--pad);
+  width: var(--w);
+  height: calc(var(--w) * 0.3407);
+}
+
+.page-loader-glyph:nth-child(2) {
+  animation: page-loader-k 2.3s var(--ease) both;
+}
+
+.page-loader-glyph:nth-child(3) {
+  animation: page-loader-m 2.3s var(--ease) both;
+}
+
+@keyframes page-loader-k {
+  0%,
+  13% {
+    transform: translate(calc(100% - 2 * var(--pad) - 0.6435 * var(--w)), 0);
+  }
+  56.5%,
+  100% {
+    transform: none;
+  }
+}
+
+@keyframes page-loader-m {
+  0%,
+  13% {
+    transform: translate(calc(100% - 2 * var(--pad) - var(--w)), calc(2 * var(--pad) + 0.3407 * var(--w) - 100%));
+  }
+  56.5% {
+    transform: translate(calc(100% - 2 * var(--pad) - var(--w)), 0);
+  }
+  100% {
+    transform: none;
+  }
+}
+
+@keyframes page-loader-reveal {
+  to {
+    transform: translateY(100%);
+    visibility: hidden;
+  }
+}
+
+@keyframes page-loader-lock {
+  from,
+  to {
+    overflow: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html:has(.page-loader) {
+    animation: page-loader-lock 3.5s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-loader {
+    display: none;
+  }
+}

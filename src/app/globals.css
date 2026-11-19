@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #0b1b3d;
+  --color-ink: #0b1b3d;
+  --color-paper: #fbfbfb;
+  --color-mist: #e5e8eb;
+  --color-charcoal: #1e1e1e;
+  --color-slate: #8c94a3;
+  --color-steel: #b2b7c1;
+  --color-ember: #d95a2b;
+  --color-azure: #376eb9;
+  --color-sky: #c3d7f1;
+}
+
+@theme inline {
+  --font-display: var(--font-butler), Georgia, serif;
+  --font-sans: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
+  --font-ui: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  :root {
+    --page-margin: 0px;
+    --page-padding: 1.5rem;
+  }
+
+  @media (min-width: 64rem) {
+    :root {
+      --page-margin: 50px;
+    }
+  }
+
+  html {
+    color-scheme: light;
+  }
+
+  html:has(#mobile-menu:popover-open) {
+    overflow: hidden;
+  }
+
+  body {
+    @apply bg-paper font-sans text-ink antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    font-weight: 600;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    line-height: 1.1;
+  }
+
+  h2 {
+    font-size: 2rem;
+    line-height: 1.1;
+  }
+
+  .eyebrow + h1,
+  .eyebrow + h2 {
+    margin-top: 0.5rem;
+  }
+
+  h1 + p,
+  h2 + p {
+    margin-top: 0.8125rem;
+  }
+
+  @media (min-width: 48rem) {
+    h1 {
+      font-size: 3.125rem;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+    }
+
+    .eyebrow + h1,
+    .eyebrow + h2 {
+      margin-top: 0.625rem;
+    }
+
+    h1 + p,
+    h2 + p {
+      margin-top: 1.0625rem;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    h1 {
+      font-size: 3.75rem;
+    }
+
+    h2 {
+      font-size: 3rem;
+    }
+
+    .eyebrow + h1,
+    .eyebrow + h2 {
+      margin-top: 0.75rem;
+    }
+
+    h1 + p,
+    h2 + p {
+      margin-top: 1.25rem;
+    }
+  }
+}
+
+@utility page-x {
+  margin-inline: var(--page-margin);
+  padding-inline: var(--page-padding);
+}
+
+@utility eyebrow {
+  font-family: var(--font-ui);
+  font-size: 0.625rem;
+  line-height: 1.5;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  @media (min-width: 48rem) {
+    font-size: 0.75rem;
+  }
+}

@@ -1,0 +1,172 @@
+.global-reach {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  background: var(--color-navy);
+  color: #fff;
+}
+
+.global-reach-layer {
+  position: sticky;
+  top: 0;
+  height: 0;
+}
+
+.global-reach-layer img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: none;
+  height: 100lvh;
+  object-fit: cover;
+  object-position: 50% 0%;
+}
+
+.global-reach-bg {
+  z-index: 0;
+}
+
+.global-reach-bg::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100lvh;
+  background: linear-gradient(rgb(11 27 61 / 0.55), rgb(11 27 61 / 0.3) 40%, rgb(11 27 61 / 0) 62%);
+}
+
+.global-reach-fg {
+  z-index: 2;
+  pointer-events: none;
+}
+
+.global-reach-content {
+  position: relative;
+  z-index: 1;
+  padding-top: 25svh;
+  padding-bottom: 50svh;
+}
+
+.global-reach-grid {
+  display: grid;
+  row-gap: 1.25rem;
+}
+
+.global-reach-title {
+  font-size: 2.5rem;
+  line-height: 0.95;
+}
+
+.global-reach-lead,
+.global-reach-follow {
+  display: block;
+}
+
+.global-reach-lead {
+  width: fit-content;
+  margin-inline: auto;
+}
+
+.global-reach-follow {
+  margin-top: 1.25rem;
+  text-align: right;
+}
+
+.global-reach-text {
+  max-width: 33.75rem;
+  color: rgb(255 255 255 / 0.85);
+}
+
+.global-reach-text p + p {
+  margin-top: 1em;
+}
+
+.global-reach-logos {
+  --logo-area: 2000;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem 1rem;
+  place-items: center;
+  width: 100%;
+  max-width: 68.75rem;
+  margin: 1rem auto 0;
+}
+
+.global-reach-logos li {
+  display: grid;
+  place-items: center;
+  height: 3rem;
+}
+
+.global-reach-logos img {
+  width: calc(sqrt(var(--logo-area) * var(--ratio)) * 1px);
+  height: auto;
+  filter: brightness(0) invert(1);
+  opacity: 0.85;
+}
+
+@media (min-width: 30rem) {
+  .global-reach-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 1.25rem;
+  }
+
+  .global-reach-title {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-template-rows: subgrid;
+    grid-column: 1 / -1;
+    grid-row: 1 / span 2;
+  }
+
+  .global-reach-lead {
+    grid-column: 1 / -1;
+  }
+
+  .global-reach-follow {
+    grid-column: 1;
+    grid-row: 2;
+    margin-top: 0;
+  }
+
+  .global-reach-text {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .global-reach-logos {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 48rem) {
+  .global-reach-content {
+    padding-top: 35svh;
+  }
+
+  .global-reach-title {
+    font-size: 4rem;
+  }
+
+  .global-reach-text {
+    font-size: 1.125rem;
+  }
+
+  .global-reach-logos {
+    --logo-area: 2300;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 2.25rem 1.5rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .global-reach-title {
+    font-size: 5rem;
+  }
+
+  .global-reach-logos {
+    --logo-area: 3000;
+  }
+}

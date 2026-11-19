@@ -1,0 +1,26 @@
+.section-heading .eyebrow {
+  color: color-mix(in srgb, currentColor 65%, transparent);
+}
+
+.section-heading h2 {
+  text-wrap: balance;
+}
+
+.section-heading-intro {
+  max-width: 46rem;
+  color: color-mix(in srgb, currentColor 72%, transparent);
+}
+
+.section-heading.is-center {
+  text-align: center;
+}
+
+.section-heading.is-center .section-heading-intro {
+  margin-inline: auto;
+}
+
+@media (min-width: 48rem) {
+  .section-heading-intro {
+    font-size: 1.125rem;
+  }
+}

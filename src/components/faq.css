@@ -1,0 +1,133 @@
+.faq {
+  --faq-line: rgb(11 27 61 / 0.14);
+  padding-block: 5rem;
+  color: var(--color-navy);
+}
+
+.faq-grid {
+  display: grid;
+  margin-top: 2.5rem;
+}
+
+.faq-column {
+  border-top: 1px solid var(--faq-line);
+}
+
+.faq-column + .faq-column {
+  border-top: 0;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--faq-line);
+}
+
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-block: 1.25rem;
+  font-size: 1.125rem;
+  line-height: 1.35;
+  list-style: none;
+  cursor: pointer;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary:focus-visible {
+  outline: 2px solid var(--color-azure);
+  outline-offset: 4px;
+}
+
+.faq-toggle {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid rgb(11 27 61 / 0.25);
+}
+
+.faq-toggle svg {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+.faq-item summary:hover .faq-toggle {
+  border-color: var(--color-navy);
+}
+
+.faq-item[open] .faq-toggle {
+  border-color: var(--color-navy);
+  background: var(--color-navy);
+  color: #fff;
+}
+
+.faq-item[open] .faq-toggle svg {
+  rotate: 180deg;
+}
+
+.faq-answer {
+  max-width: 40rem;
+  padding: 0 3.75rem 1.5rem 0;
+  color: rgb(11 27 61 / 0.7);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .faq {
+    interpolate-size: allow-keywords;
+  }
+
+  .faq-toggle {
+    transition: background-color 0.25s, border-color 0.25s, color 0.25s;
+  }
+
+  .faq-toggle svg {
+    transition: rotate 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  .faq-item::details-content {
+    block-size: 0;
+    overflow: hidden;
+    transition: block-size 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), content-visibility 0.35s allow-discrete;
+  }
+
+  .faq-item[open]::details-content {
+    block-size: auto;
+  }
+}
+
+@media (min-width: 48rem) {
+  .faq {
+    padding-block: 6.25rem;
+  }
+
+  .faq-grid {
+    margin-top: 3.125rem;
+  }
+
+  .faq-item summary {
+    padding-block: 1.5rem;
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .faq {
+    padding-block: 7.5rem;
+  }
+
+  .faq-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 1.5rem;
+    align-items: start;
+    margin-top: 3.75rem;
+  }
+
+  .faq-column + .faq-column {
+    border-top: 1px solid var(--faq-line);
+  }
+}
